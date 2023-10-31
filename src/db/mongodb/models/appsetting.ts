@@ -4,11 +4,13 @@ import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 interface appsettingAttrs {
   pushNotifications: Boolean
   dataCrashCollectionode: Boolean
+  userId: mongoose.Types.ObjectId;
 }
 
 interface appsettingDoc extends mongoose.Document {
   pushNotifications: Boolean;
   dataCrashCollectionode: Boolean;
+  userId: mongoose.Types.ObjectId;
 }
 
 interface appsettingModel extends mongoose.Model<appsettingDoc> {
@@ -22,6 +24,10 @@ const appsettingSchema = new Schema({
     },
     dataCrashCollectionode: {
       type: Boolean,
+      require: true,
+    },
+    userId: {
+      type: mongoose.Types.ObjectId,
       require: true,
     },
   },

@@ -38,7 +38,7 @@ it("creates new service", async () => {
           "status"
         ]);
   if(!compareResult.result){
-    console.log(JSON.stringify(compareResult.messages));
+    // console.log(JSON.stringify(compareResult.messages));
   }        
   expect(compareResult.result).toEqual(true);
 });

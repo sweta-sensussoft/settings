@@ -16,12 +16,13 @@ export const appsettings = async function (req: Request): Promise<any> {
     pushNotifications,
     dataCrashCollectionode
   } = req.body;
-
+  var userId = req.currentUser?.sub;
   try {
     const result = await Appsetting.updateOne(
-      {}, // Empty condition to update all documents
+      {userId}, // Empty condition to update all documents
       {
         $set: {
+          userId,
           pushNotifications,
           dataCrashCollectionode
         }
@@ -39,12 +40,17 @@ export const appsettings = async function (req: Request): Promise<any> {
 
 export const getAppsettingAll = async function (req: Request): Promise<any> {
 
-  var responseData = {} as any;
+  try {
+    const userId = new mongoose.Types.ObjectId(req.currentUser?.sub); // Assuming req.currentUser?.sub is a valid ObjectId
 
-  const result = await Appsetting.find();
+    const query = { userId }; // No need to wrap it in { userId: userId }
 
-
-  return result;
+    const result = await Appsetting.find(query).exec();
+    return result;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error; // Handle or rethrow the error as needed
+  }
 
 }
 

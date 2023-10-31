@@ -130,7 +130,7 @@ router.post("/api/settings/appsettings",requireAuth, async (req: Request, res: R
   }
 });
 
-router.get("/api/settings/appsettings", async (req: Request, res: Response) => {
+router.get("/api/settings/appsettings",requireAuth, async (req: Request, res: Response) => {
   var responseData = {} as any;
   var result = await getAppsettingAll(req);
   if(result){
@@ -181,6 +181,8 @@ router.get("/api/settings/reportreasons", async (req: Request, res: Response) =>
   
 });
 
-
+router.get('/healthz', async (req: Request, res: Response) => {
+  return res.status(200).json("Settin API grunning");
+});
 
 export { router as servicesRouter };

@@ -16,8 +16,8 @@ app.use(
   })
 );
 app.use(currentUser);
-console.log(process.env.AUTH0_ISSUER);
-console.log();
+// console.log(process.env.AUTH0_ISSUER);
+// console.log();
 
 
 // for parsing application/json

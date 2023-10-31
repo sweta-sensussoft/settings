@@ -50,6 +50,6 @@ export const compare = (obj1: object, obj2: object, property: string): boolean =
  * @param {object} obj2 object to print.
  */
 export const logToConsole = (header:string,obj: object) => {
-  console.log(`${header} :${JSON.stringify(obj, null, 3)}`);
+  // console.log(`${header} :${JSON.stringify(obj, null, 3)}`);
 
 }

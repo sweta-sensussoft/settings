@@ -45,11 +45,11 @@ export const contactus = async function (req: Request): Promise<any> {
   // Call the sendEmail function with the email options
   await sendEmail(emailOptions)
     .then(() => {
-      console.log('Email sent successfully');
+      // console.log('Email sent successfully');
       // process.exit(0);
     })
     .catch((error) => {
-      console.error('Error sending email:', error);
+      //console.error('Error sending email:', error);
     });
 
     return updatedData;
